@@ -1,0 +1,32 @@
+/* =========================================
+   EFEK KARTU PELAYANAN
+========================================= */
+
+.service-card {
+    cursor: pointer;
+    transition: 
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.18);
+
+    background: #ffffff;
+}
+
+.service-card:active {
+    transform: scale(0.96);
+}
+
+.service-card > div {
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover > div {
+    transform: scale(1.15);
+}
