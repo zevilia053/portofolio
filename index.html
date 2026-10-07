@@ -1,32 +1,899 @@
-/* =========================================
-   EFEK KARTU PELAYANAN
-========================================= */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zevil — Portfolio</title>
 
-.service-card {
-    cursor: pointer;
-    transition: 
-        transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease;
+<style>
+:root{
+    --bg:#f7f7f4;
+    --surface:#ffffff;
+    --surface2:#f0f1ed;
+    --text:#111111;
+    --muted:#686b68;
+    --line:#dedfd9;
+    --accent:#111111;
 }
 
-.service-card:hover {
-    transform: translateY(-8px);
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+}
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:20;
+    background:rgba(247,247,244,.85);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--line);
+}
+
+.nav-inner{
+    max-width:1120px;
+    margin:auto;
+    padding:18px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.brand{
+    font-weight:800;
+    font-size:20px;
+    letter-spacing:-.06em;
+}
+
+.brand span{
+    opacity:.45;
+}
+
+nav a{
+    color:var(--text);
+    text-decoration:none;
+    font-size:13px;
+    margin-left:25px;
+    opacity:.7;
+}
+
+nav a:hover{
+    opacity:1;
+}
+
+/* HERO */
+
+.hero{
+    max-width:1120px;
+    margin:auto;
+    min-height:100vh;
+    padding:150px 24px 90px;
+    display:grid;
+    grid-template-columns:1.25fr .75fr;
+    gap:50px;
+    align-items:center;
+}
+
+.eyebrow{
+    font-size:12px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(55px,9vw,110px);
+    line-height:.9;
+    letter-spacing:-.075em;
+}
+
+.hero h1 em{
+    font-style:normal;
+    color:var(--muted);
+}
+
+.lead{
+    font-size:18px;
+    color:var(--muted);
+    max-width:620px;
+    margin:28px 0;
+}
+
+.actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:13px 20px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:700;
+    font-size:13px;
+    border:1px solid var(--line);
+    color:var(--text);
+}
+
+.btn.primary{
+    background:#111;
+    color:white;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+}
+
+.orb{
+    width:min(360px,75vw);
+    aspect-ratio:1;
+    border-radius:50%;
+    margin:auto;
+    background:
+    radial-gradient(
+        circle at 35% 25%,
+        #ffffff 0,
+        #c9cbc5 10%,
+        #777b76 34%,
+        #24282a 67%,
+        #0d0f10 100%
+    );
     box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.18);
-
-    background: #ffffff;
+        inset -35px -45px 70px #0008,
+        0 35px 80px #0002;
 }
 
-.service-card:active {
-    transform: scale(0.96);
+/* GENERAL */
+
+.section{
+    max-width:1120px;
+    margin:auto;
+    padding:110px 24px;
 }
 
-.service-card > div {
-    transition: transform 0.3s ease;
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    align-items:end;
+    margin-bottom:42px;
 }
 
-.service-card:hover > div {
-    transform: scale(1.15);
+.kicker{
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--muted);
+    font-weight:800;
 }
+
+.section h2{
+    font-size:clamp(38px,5vw,64px);
+    line-height:1;
+    letter-spacing:-.06em;
+    margin-top:8px;
+}
+
+.intro{
+    max-width:470px;
+    color:var(--muted);
+}
+
+/* ABOUT */
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.panel{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:30px;
+}
+
+.panel p{
+    color:var(--muted);
+}
+
+.facts{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.fact{
+    padding:17px;
+    background:var(--surface2);
+    border-radius:16px;
+}
+
+.fact b{
+    display:block;
+    font-size:13px;
+    margin-bottom:4px;
+}
+
+.fact span{
+    font-size:12px;
+    color:var(--muted);
+}
+
+/* EXPERIENCE */
+
+.timeline{
+    display:grid;
+    gap:14px;
+}
+
+.timeline-item{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:25px;
+    padding:28px 0;
+    border-top:1px solid var(--line);
+}
+
+.timeline-item:last-child{
+    border-bottom:1px solid var(--line);
+}
+
+.year{
+    color:var(--muted);
+    font-size:13px;
+}
+
+.timeline-item h3{
+    font-size:24px;
+    letter-spacing:-.03em;
+}
+
+.timeline-item p{
+    color:var(--muted);
+    margin-top:8px;
+    max-width:720px;
+}
+
+/* SKILLS */
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.tag{
+    padding:13px 17px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:var(--surface);
+    font-size:13px;
+}
+
+/* PROJECTS */
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.project{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:14px;
+    transition:.25s;
+}
+
+.project:hover{
+    transform:translateY(-6px);
+}
+
+.visual{
+    height:210px;
+    border-radius:17px;
+    background:linear-gradient(
+        135deg,
+        var(--surface2),
+        #dfe1db
+    );
+    display:flex;
+    align-items:flex-end;
+    padding:18px;
+    font-size:11px;
+    letter-spacing:.12em;
+    color:var(--muted);
+}
+
+.project h3{
+    font-size:20px;
+    margin:18px 6px 5px;
+}
+
+.project p{
+    color:var(--muted);
+    font-size:13px;
+    margin:0 6px 14px;
+}
+
+.project a{
+    display:inline-block;
+    color:var(--text);
+    font-size:12px;
+    font-weight:700;
+    margin:0 6px 6px;
+    text-decoration:none;
+}
+
+/* CONTACT */
+
+.contact{
+    background:#111;
+    color:white;
+    max-width:none;
+}
+
+.contact-inner{
+    max-width:1120px;
+    margin:auto;
+    padding:110px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:40px;
+}
+
+.contact .kicker{
+    color:#999;
+}
+
+.contact .intro{
+    color:#aaa;
+}
+
+.contact h2{
+    font-size:clamp(42px,7vw,82px);
+    letter-spacing:-.07em;
+    line-height:.95;
+    margin-top:10px;
+}
+
+.contact .btn{
+    color:white;
+    border-color:#444;
+}
+
+.contact .btn.primary{
+    background:white;
+    color:#111;
+}
+
+/* FOOTER */
+
+footer{
+    max-width:1120px;
+    margin:auto;
+    padding:24px;
+    color:var(--muted);
+    font-size:11px;
+    display:flex;
+    justify-content:space-between;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    nav a{
+        display:none;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+        padding-top:125px;
+    }
+
+    .hero h1{
+        font-size:60px;
+    }
+
+    .orb{
+        width:230px;
+    }
+
+    .about-grid,
+    .projects{
+        grid-template-columns:1fr;
+    }
+
+    .section-head,
+    .contact-inner{
+        display:block;
+    }
+
+    .intro{
+        margin-top:20px;
+    }
+
+    .timeline-item{
+        grid-template-columns:1fr;
+        gap:5px;
+    }
+
+    .contact .btn{
+        margin-top:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+<div class="nav-inner">
+
+<div class="brand">
+Zevil<span>ia.</span>
+</div>
+
+<div>
+<a href="#about">About</a>
+<a href="#experience">Experience</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+
+</div>
+</nav>
+
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div>
+
+<div class="eyebrow">
+Portfolio / 2026
+</div>
+
+<h1>
+Designing the <em>web.</em><br>
+Securing the <em>digital.</em>
+</h1>
+
+<p class="lead">
+Hi, I'm Zevilia — an Informatics student focused on
+Web UI/UX, web development, and cybersecurity,
+with a passion for building digital experiences
+that are both intuitive and secure.
+</p>
+
+<div class="actions">
+
+<a class="btn primary" href="#projects">
+View my work
+</a>
+
+<a class="btn" href="#contact">
+Get in touch
+</a>
+
+</div>
+
+</div>
+
+<div class="orb"></div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about" class="section">
+
+<div class="section-head">
+
+<div>
+
+<div class="kicker">
+01 / About
+</div>
+
+<h2>
+A little about me.
+</h2>
+
+</div>
+
+<p class="intro">
+I enjoy creating digital products that are easy to use,
+visually clear, and built with security in mind.
+</p>
+
+</div>
+
+
+<div class="about-grid">
+
+<div class="panel">
+
+<p>
+I am an Informatics student at President University Pekanbaru
+with a primary focus on Web UI/UX and a growing specialization
+in Cybersecurity.
+
+I enjoy designing user-centered interfaces,
+developing web solutions, and exploring how digital systems
+can be made safer and more reliable.
+</p>
+
+</div>
+
+
+<div class="panel">
+
+<div class="facts">
+
+<div class="fact">
+<b>Education</b>
+<span>B.Sc. Informatics</span>
+</div>
+
+<div class="fact">
+<b>Primary Focus</b>
+<span>Web UI/UX</span>
+</div>
+
+<div class="fact">
+<b>Security Focus</b>
+<span>Cybersecurity</span>
+</div>
+
+<div class="fact">
+<b>Based in</b>
+<span>Indonesia</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- EXPERIENCE -->
+
+<section id="experience" class="section">
+
+<div class="section-head">
+
+<div>
+
+<div class="kicker">
+02 / Experience
+</div>
+
+<h2>
+Where I've been.
+</h2>
+
+</div>
+
+</div>
+
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+<div class="year">
+2025 — Present
+</div>
+
+<div>
+
+<h3>
+Owner & Digital Marketer — Jngadjet.pku
+</h3>
+
+<p>
+Founded and independently manage a smartphone
+buy-and-sell business through TikTok and Instagram,
+covering product sourcing, visual content, marketing,
+customer service, inventory, and transaction records.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="year">
+2024
+</div>
+
+<div>
+
+<h3>
+Freelance Project Supervisor — LONGi Malaysia Sdn. Bhd.
+</h3>
+
+<p>
+Supervised on-site construction work, monitored daily
+progress, coordinated field workers and internal teams,
+and supported occupational health and safety procedures.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="year">
+2024 — Present
+</div>
+
+<div>
+
+<h3>
+Documentation & Publication Coordinator — PUMA
+</h3>
+
+<p>
+Manage photography, videography, promotional visual assets,
+and digital documentation for IT and student events.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills" class="section">
+
+<div class="section-head">
+
+<div>
+
+<div class="kicker">
+03 / Skills
+</div>
+
+<h2>
+What I work with.
+</h2>
+
+</div>
+
+<p class="intro">
+My strongest interests sit at the intersection of
+user experience, web technology, and digital security.
+</p>
+
+</div>
+
+
+<div class="skills">
+
+<span class="tag">Web UI/UX</span>
+<span class="tag">Figma</span>
+<span class="tag">Wireframing</span>
+<span class="tag">Prototyping</span>
+<span class="tag">Responsive Web Design</span>
+<span class="tag">HTML & CSS</span>
+<span class="tag">PHP</span>
+<span class="tag">Laravel</span>
+<span class="tag">MySQL</span>
+<span class="tag">Java</span>
+<span class="tag">Cybersecurity</span>
+<span class="tag">Digital Forensics</span>
+<span class="tag">Microsoft Excel</span>
+<span class="tag">Google Sheets</span>
+<span class="tag">Canva</span>
+
+</div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects" class="section">
+
+<div class="section-head">
+
+<div>
+
+<div class="kicker">
+04 / Selected Work
+</div>
+
+<h2>
+What I've built.
+</h2>
+
+</div>
+
+</div>
+
+
+<div class="projects">
+
+
+<article class="project">
+
+<div class="visual">
+UI/UX / 01
+</div>
+
+<h3>
+Mobile & Web UI/UX
+</h3>
+
+<p>
+Wireframes, user flows, and high-fidelity prototypes
+for information systems and e-commerce applications
+using Figma.
+</p>
+
+<a href="#contact">
+View project →
+</a>
+
+</article>
+
+
+<article class="project">
+
+<div class="visual">
+SECURITY / 02
+</div>
+
+<h3>
+Cybersecurity & Digital Forensics
+</h3>
+
+<p>
+Academic and practical exploration of cybersecurity
+concepts, digital forensics, system protection,
+and secure digital environments.
+</p>
+
+<a href="#contact">
+View project →
+</a>
+
+</article>
+
+
+<article class="project">
+
+<div class="visual">
+WEB / 03
+</div>
+
+<h3>
+Web Development
+</h3>
+
+<p>
+Web-based applications and interfaces built with
+HTML, CSS, PHP, Laravel, and MySQL, with attention
+to usability and structure.
+</p>
+
+<a href="#contact">
+View project →
+</a>
+
+</article>
+
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact">
+
+<div class="contact-inner">
+
+<div>
+
+<div class="kicker">
+05 / Contact
+</div>
+
+<h2>
+Let's make<br>
+something good.
+</h2>
+
+</div>
+
+
+<div>
+
+<p class="intro">
+Interested in collaborating, discussing a project,
+or simply getting to know me?
+</p>
+
+<div class="actions">
+
+<a class="btn primary"
+href="mailto:zevilzevilia@gmail.com">
+Email me
+</a>
+
+<a class="btn"
+href="https://www.linkedin.com/in/zevilia-lia-ab553432b"
+target="_blank">
+LinkedIn ↗
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<span>
+© 2026 Zevilia
+</span>
+
+<span>
+Designed & built with curiosity.
+</span>
+
+</footer>
+
+</body>
+</html>
